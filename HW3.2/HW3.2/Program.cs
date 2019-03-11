@@ -48,23 +48,23 @@ namespace HW3._2
                 }
             }
 
-            foreach (var item in students)
-            {
-                Console.WriteLine(item + " " + item.Value);
-            }
+            
 
             DictionaryDisplay(students);
+            
         }
 
         public static void DictionaryDisplay(Dictionary<string, int> dic)
         {
+            Console.WriteLine();
             Console.WriteLine("Please enter surname to see student's mark or a mark to see all students with it:");
             Console.WriteLine("Or enter 'exit' to exit");
             while (true)
             {
-         
+                try{
+
                 string temp = Console.ReadLine();
-                if (temp == "stop")
+                if (temp == "exit")
                 {
                     isInputFinished = false;
                     break;
@@ -72,26 +72,41 @@ namespace HW3._2
 
                 if (isDigit(temp) == true)
                 {
+                    int count = 0;
                     int mark = Convert.ToInt32(temp);
                     Console.WriteLine($"Students with {mark} mark:");
                     foreach (var item in dic)
                     {
                         if (item.Value == mark)
                         {
-                            Console.Write($"{item}" + ",");
+                            Console.Write($"{item.Key}" + " ");
                         }
-                        else
-                        {
-                            Console.WriteLine($"There are no students with {mark} mark");
-                        }
+                        else{
+                            count++;
+                            
+                            }
                     }
+
+                    if(count==dic.Count){
+                        Console.WriteLine($"There are no students with {mark} mark");
+                    }
+
                     Console.WriteLine();
                 }
                 else
                 {
                     Console.WriteLine($"Student {temp} received a {dic[temp]}");
+                    Console.WriteLine("Please enter surname to see student's mark or a mark to see all students with it:");
+                    Console.WriteLine("Or enter 'exit' to exit");
+                    Console.WriteLine();                    
                     
-                    
+                }
+                } catch(System.FormatException e2){
+                    Console.WriteLine("Input has wrong format");
+                    continue;
+                } catch(System.Collections.Generic.KeyNotFoundException e3){
+                    Console.WriteLine("Input has wrong format");
+                    continue;
                 }
 
 
