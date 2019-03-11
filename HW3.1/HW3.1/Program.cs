@@ -31,8 +31,7 @@ namespace HW3._1
         {
             Console.WriteLine("Your sorted descending list is: ");
             int count = 0;
-            int max = 0;
-            int min = 1;
+            
 
             foreach (var item in lst)
             {
@@ -46,46 +45,22 @@ namespace HW3._1
             {
                 array[i] = (int)lst[i];       
             }
-            for (int i = 0; i < count; i++)
-            {
-                if (array[i] > max)
-                {
-                    max = array[i];
-                }
-                else if(array[i] < min)
-                {
-                    min = array[i];
-                }     
-            }
+            
+            Array.Sort(array);
           
-            while(isSorted){
-
-                for (int i = 0; i < array.Length - 1; i++)
+            
+            for(int i = array.Length-1; i>=0;i--)
                 {
-                    int temp = 0;
-                    if(array[0] == max && array[array.Length-1] == min)
-                    {
-                        isSorted = false;
-                    }
-                    if (array[i] < array[i + 1])
-                    {
-                        temp = array[i];
-                        array[i] = array[i + 1];
-                        array[i + 1] = temp;
-                    }
+                Console.Write(array[i] + " ");
                 }
-               
-            }
-
-            foreach (var item in array)
-            {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine();
+           Console.WriteLine();
 
             ShortList(array);
+              
+            }
+            
            
-        }
+        
 
         public static void Start()
         {

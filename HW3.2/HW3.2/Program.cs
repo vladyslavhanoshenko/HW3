@@ -49,18 +49,20 @@ namespace HW3._2
             }
 
             
-
+            Console.WriteLine();
             DictionaryDisplay(students);
             
         }
 
         public static void DictionaryDisplay(Dictionary<string, int> dic)
         {
-            Console.WriteLine();
-            Console.WriteLine("Please enter surname to see student's mark or a mark to see all students with it:");
-            Console.WriteLine("Or enter 'exit' to exit");
+           
+            
             while (true)
             {
+                Console.WriteLine("Please enter surname to see student's mark or a mark to see all students with it:");
+            Console.WriteLine("Or enter 'exit' to exit");
+                
                 try{
 
                 string temp = Console.ReadLine();
@@ -77,35 +79,41 @@ namespace HW3._2
                     Console.WriteLine($"Students with {mark} mark:");
                     foreach (var item in dic)
                     {
+                            
                         if (item.Value == mark)
                         {
+                                
                             Console.Write($"{item.Key}" + " ");
+                               
                         }
                         else{
                             count++;
                             
                             }
+                        Console.WriteLine();
                     }
 
                     if(count==dic.Count){
                         Console.WriteLine($"There are no students with {mark} mark");
+                            
                     }
 
-                    Console.WriteLine();
+                    
                 }
                 else
                 {
                     Console.WriteLine($"Student {temp} received a {dic[temp]}");
-                    Console.WriteLine("Please enter surname to see student's mark or a mark to see all students with it:");
-                    Console.WriteLine("Or enter 'exit' to exit");
+                    
                     Console.WriteLine();                    
                     
                 }
                 } catch(System.FormatException e2){
                     Console.WriteLine("Input has wrong format");
+                    Console.WriteLine();
                     continue;
                 } catch(System.Collections.Generic.KeyNotFoundException e3){
                     Console.WriteLine("Input has wrong format");
+                    Console.WriteLine();
                     continue;
                 }
 
